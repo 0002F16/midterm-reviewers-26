@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT 323 Midterm Mock Exam Web App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <p class="eyebrow">IT 323 · Information Assurance and Security</p>
+          <h1>Midterm Mock Exam Web App</h1>
+          <p class="sidebar-copy">
+            Five mock exams, actual answer boxes, autosave, timer, progress tracking,
+            review mode, and export for studying.
+          </p>
+        </div>
+
+        <section class="sidebar-block">
+          <p class="block-label">Coverage</p>
+          <ul class="coverage-list">
+            <li><span>50%</span> Cryptography</li>
+            <li><span>25%</span> Access Control</li>
+            <li><span>25%</span> Distributed Systems</li>
+          </ul>
+        </section>
+
+        <section class="sidebar-block">
+          <p class="block-label">Live Session</p>
+          <div class="session-grid">
+            <div class="session-card">
+              <span class="session-value" id="timerValue">00:00</span>
+              <span class="session-label">Elapsed</span>
+            </div>
+            <div class="session-card">
+              <span class="session-value" id="progressValue">0/4</span>
+              <span class="session-label">Answered</span>
+            </div>
+          </div>
+          <div class="action-stack">
+            <button class="action-button primary" id="toggleTimerBtn">Pause Timer</button>
+            <button class="action-button secondary" id="resetExamBtn">Reset Current Exam</button>
+            <button class="action-button secondary" id="exportBtn">Export Answers</button>
+            <button class="action-button secondary" id="printBtn">Print / Save PDF</button>
+          </div>
+        </section>
+
+        <nav class="exam-nav" id="examNav" aria-label="Mock exams"></nav>
+      </aside>
+
+      <main class="main-panel">
+        <header class="hero-card">
+          <div>
+            <p class="eyebrow">Study Workspace</p>
+            <h2 id="heroTitle">Choose a mock exam</h2>
+            <p id="heroDescription">
+              Built to mirror your announced midterm format: one major cryptography problem, one access-control essay, and two distributed-systems case questions.
+            </p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Mock exams</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">4</span>
+              <span class="stat-label">Main questions each</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">100</span>
+              <span class="stat-label">Points simulated</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="toolbar">
+          <div class="toolbar-chip" id="difficultyChip">Difficulty: —</div>
+          <div class="toolbar-chip" id="focusChip">Focus: —</div>
+          <div class="toolbar-chip" id="saveChip">Autosave: Ready</div>
+        </section>
+
+        <section id="examOverview" class="overview-grid"></section>
+        <section id="questionsContainer" class="questions-stack"></section>
+      </main>
+    </div>
+
+    <template id="questionTemplate">
+      <article class="question-card">
+        <div class="question-header">
+          <div>
+            <p class="question-tag"></p>
+            <h3 class="question-title"></h3>
+          </div>
+          <span class="question-points"></span>
+        </div>
+        <div class="question-body"></div>
+        <label class="answer-label" for="">Your Answer</label>
+        <textarea class="answer-input" rows="10" placeholder="Write your full answer here..."></textarea>
+        <div class="question-footer">
+          <span class="save-state">Not answered yet</span>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
